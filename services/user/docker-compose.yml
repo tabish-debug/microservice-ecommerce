@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  user:
+    build:
+      dockerfile: dockerfile
+      context: .
+    volumes:
+      - ./:/user
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgres://user@postgres/user
+    depends_on:
+      - postgres
+  
+  postgres:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_DB=user 
+      - POSTGRES_PASSWORD=userservice
