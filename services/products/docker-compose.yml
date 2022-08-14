@@ -10,7 +10,9 @@ services:
     volumes:
       - ./:/products
     environment:
-      - PORT=8080 
+      - PORT=8080
+    depends_on:
+      - mongodb 
 
   mongodb:
     image: mongo:latest
