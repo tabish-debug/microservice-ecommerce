@@ -19,7 +19,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - ~/apps/mongo:/data/db
+      - ./db/data:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=products
       - MONGO_INITDB_ROOT_PASSWORD=product-service 
